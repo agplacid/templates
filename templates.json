@@ -750,6 +750,19 @@
   },
   {
     "type": "stack",
+    "title": "CouchDB",
+    "description": "CouchDB cluster",
+    "note": "Deploys an secure CouchDB cluster, please refer to 
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://portainer.io/images/logos/cockroachdb.png",
+    "repository": {
+      "url": "https://github.com/agplacid/templates",
+      "stackfile": "stacks/docker-couchdb/docker-stack.yml"
+    }
+    },
+    {
+    "type": "stack",
     "title": "Wordpress",
     "description": "Wordpress setup with a MySQL database",
     "note": "Deploys a Wordpress instance connected to a MySQL database.",
