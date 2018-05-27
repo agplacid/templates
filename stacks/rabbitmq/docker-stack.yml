@@ -11,7 +11,7 @@ services:
     environment:
       ERLANG_COOKIE: change-me
       ERLANG_HOSTNAME: 'long'
-      RABBITMQ_HOSTS=rabbitmq
+      RABBITMQ_HOSTS=rabbitmq.local
       RABBITMQ_USER=guest
       RABBITMQ_PASS=guest 
     ports:
