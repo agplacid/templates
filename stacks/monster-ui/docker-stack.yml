@@ -1,0 +1,29 @@
+version: '3'
+services:
+  monster-ui:
+    container_name: monster-ui
+    build:
+      context: images/monster-ui
+    image: "2600hz/monster-ui:${DOCKER_TAG:-latest}"
+    environment:
+      NGINX_PROXY_PROTOCOL: 'false'
+      NGINX_LOG_LEVEL: warn
+      MONSTERUI_CROSSBAR_URI: http://sip.t-factor.co.uk:8000/v2/
+      MONSTERUI_WEBSOCKET_URI: ws://sip.t-factor.co.uk:5555
+      MONSTERUI_WEBPHONE_URI: ws://sip.t-factor.co.uk:5064
+      MONSTERUI_DISABLE_BRAINTREE: 'false'
+      MONSTERUI_SHOW_JS_ERRORS: 'true'
+      ERLANG_HOSTNAME: long
+      ERLANG_COOKIE: change-me
+      RABBITMQ_HOSTS: rabbitmq.local
+      COUCHDB_HOST: couchdb.local
+      COUCHDB_USER: admin
+      COUCHDB_PASS: secret
+    ports:
+    - "80:80"
+    networks:
+      local:
+        aliases:
+        - monster-ui.local
+networks:
+   local:
