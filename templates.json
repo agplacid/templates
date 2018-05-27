@@ -762,6 +762,18 @@
     },
     {
     "type": "stack",
+    "title": "Freeswitch",
+    "description": "Freeswitch cluster",
+    "note": "Setup a worldclass telephone switch Freeswitch cluster",  
+    "categories": ["Telephony"],
+    "platform": "linux",
+    "repository": {
+      "url": "https://github.com/agplacid/templates",
+      "stackfile": "stacks/freeswitch/docker-stack.yml"
+    }
+    },
+    {
+    "type": "stack",
     "title": "Wordpress",
     "description": "Wordpress setup with a MySQL database",
     "note": "Deploys a Wordpress instance connected to a MySQL database.",
