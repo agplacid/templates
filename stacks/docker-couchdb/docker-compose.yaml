@@ -25,4 +25,4 @@ services:
     - SYS_NICE
     - SYS_RESOURCE
 networks:
-local:
+  local:
