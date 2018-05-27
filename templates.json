@@ -756,7 +756,19 @@
     "repository": {
       "url": "https://github.com/agplacid/templates",
       "stackfile": "stacks/docker-couchdb/docker-stack.yml"
-    }
+     }
+    },
+   {
+    "type": "stack",
+    "title": "Kamailio",
+    "description": "Kamailio cluster",
+    "note": "Carier Classs sip proxy cluster",  
+    "categories": ["telephony"],
+    "platform": "linux",
+    "repository": {
+      "url": "https://github.com/agplacid/templates",
+      "stackfile": "stacks/kamailio/docker-stack.yml"
+     }
     },
     {
     "type": "stack",
