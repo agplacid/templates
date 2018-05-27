@@ -760,18 +760,6 @@
     },
     {
     "type": "stack",
-    "title": "RabbitMQ",
-    "description": "Highly reliable enterprise messaging system",
-    "categories": ["messaging"],
-    "platform": "linux",
-    "logo": "https://portainer.io/images/logos/rabbitmq.png",
-    "repository": {
-    "url": "https://github.com/agplacid/templates",
-    "stackfile": "stacks/rabbitmq/docker-stack.yml"
-    }
-    },
-    {
-    "type": "stack",
     "title": "Wordpress",
     "description": "Wordpress setup with a MySQL database",
     "note": "Deploys a Wordpress instance connected to a MySQL database.",
