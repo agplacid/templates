@@ -1,0 +1,25 @@
+version: '3'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: rabbitmq.local
+    build:
+      context: images/rabbitmq
+      args:
+        RABBITMQ_VERSION: 3.6.6
+    image: "${DOCKER_ORG:-telephoneorg}/rabbitmq:${TAG:-latest}"
+    environment:
+      ERLANG_COOKIE: change-me
+      ERLANG_HOSTNAME: 'long'
+      RABBITMQ_HOSTS=rabbitmq
+      RABBITMQ_USER=guest
+      RABBITMQ_PASS=guest 
+    ports:
+    - "15672:15672"
+    - "5672:5672"
+    networks:
+      local:
+        aliases:
+        - rabbitmq.local
+networks:
+  local:
