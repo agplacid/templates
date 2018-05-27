@@ -42,4 +42,4 @@ services:
         aliases:
         - rabbitmq.local
 networks:
-local:
+   local:
