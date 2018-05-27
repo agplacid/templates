@@ -31,7 +31,7 @@ services:
       rabbitmq:
         condition: service_healthy
   rabbitmq:
-    container_name: rabbitmq
+    service_name: rabbitmq_rabbitmq
     hostname: rabbitmq.local
     environment:
       ERLANG_HOSTNAME: long
