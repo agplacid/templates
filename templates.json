@@ -752,10 +752,9 @@
     "type": "stack",
     "title": "CouchDB",
     "description": "CouchDB cluster",
-    "note": "Deploys an secure CouchDB cluster, please refer to 
+    "note": "Deploys an secure CouchDB cluster",  
     "categories": ["database"],
     "platform": "linux",
-    "logo": "https://portainer.io/images/logos/cockroachdb.png",
     "repository": {
       "url": "https://github.com/agplacid/templates",
       "stackfile": "stacks/docker-couchdb/docker-stack.yml"
