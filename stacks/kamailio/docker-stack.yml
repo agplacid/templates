@@ -16,13 +16,6 @@ services:
     - "5064-5065:5064-5065/udp"
     - "7000-7001:7000-7001"
     - "7000:7000/udp"
-    cap_add:
-    - IPC_LOCK
-    - NET_ADMIN
-    - NET_RAW
-    - NET_BROADCAST
-    - SYS_NICE
-    - SYS_RESOURCE
     networks:
       local:
         aliases:
