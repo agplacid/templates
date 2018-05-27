@@ -768,6 +768,7 @@
     "repository": {
     "url": "https://github.com/agplacid/templates",
     "stackfile": "stacks/rabbitmq/docker-stack.yml"
+    }
     },
     {
     "type": "stack",
