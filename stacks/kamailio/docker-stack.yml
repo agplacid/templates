@@ -27,19 +27,5 @@ services:
       local:
         aliases:
         - kamailio.local
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-  rabbitmq:
-    service_name: rabbitmq_rabbitmq
-    hostname: rabbitmq.local
-    environment:
-      ERLANG_HOSTNAME: long
-      ERLANG_COOKIE: change-me
-    image: telephoneorg/rabbitmq:latest
-    networks:
-      local:
-        aliases:
-        - rabbitmq.local
 networks:
    local:
