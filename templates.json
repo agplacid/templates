@@ -760,6 +760,18 @@
    },
   {
     "type": "stack",
+    "title": "monster-ui",
+    "description": "monster-ui the UI for kazoo cluster",
+    "note": "carier class telephony system cluster",  
+    "categories": ["application"],
+    "platform": "linux",
+    "repository": {
+    "url": "https://github.com/agplacid/templates",
+    "stackfile": "stacks/monster-ui/docker-stack.yml"
+    }
+   },
+  {
+    "type": "stack",
     "title": "CouchDB",
     "description": "CouchDB cluster",
     "note": "Deploys an secure CouchDB cluster",  
