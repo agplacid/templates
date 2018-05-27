@@ -55,6 +55,7 @@ services:
       COUCHDB_ADMIN_PASS: secret
       COUCHDB_SHARDS: '1'
       COUCHDB_LOG_LEVEL: info
+      KAZOO_APPS: sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr
     ports:
     - "5984:5984"
     - "5986:5986"
