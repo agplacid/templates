@@ -369,20 +369,6 @@
   },
   {
     "type": "container",
-    "title": "RabbitMQ",
-    "description": "Highly reliable enterprise messaging system",
-    "categories": ["messaging"],
-    "platform": "linux",
-    "logo": "https://portainer.io/images/logos/rabbitmq.png",
-    "image": "rabbitmq:latest",
-    "ports": [
-      "5671/tcp",
-      "5672/tcp"
-    ],
-    "volumes": ["/var/lib/rabbitmq"]
-  },
-  {
-    "type": "container",
     "title": "Ghost",
     "description": "Free and open-source blogging platform",
     "categories": ["blog"],
@@ -771,6 +757,17 @@
       "url": "https://github.com/agplacid/templates",
       "stackfile": "stacks/freeswitch/docker-stack.yml"
     }
+    },
+    {
+    "type": "stack",
+    "title": "RabbitMQ",
+    "description": "Highly reliable enterprise messaging system",
+    "categories": ["messaging"],
+    "platform": "linux",
+    "logo": "https://portainer.io/images/logos/rabbitmq.png",
+    "repository": {
+    "url": "https://github.com/agplacid/templates",
+    "stackfile": "stacks/rabbitmq/docker-stack.yml"
     },
     {
     "type": "stack",
