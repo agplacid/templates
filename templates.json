@@ -745,7 +745,19 @@
     "url": "https://github.com/agplacid/templates",
     "stackfile": "stacks/rabbitmq/docker-stack.yml"
      }
-  },
+   },
+  {
+    "type": "stack",
+    "title": "kazoo",
+    "description": "kazoo cluster",
+    "note": "carier class telephony system cluster",  
+    "categories": ["application"],
+    "platform": "linux",
+    "repository": {
+      "url": "https://github.com/agplacid/templates",
+      "stackfile": "stacks/kazoo/docker-stack.yml"
+    }
+   },
   {
     "type": "stack",
     "title": "CouchDB",
