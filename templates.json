@@ -794,7 +794,19 @@
       "stackfile": "stacks/kamailio/docker-stack.yml"
      }
     },
-    {
+   {
+    "type": "stack",
+    "title": "traefik",
+    "description": "traefik modern reverse proxy cluster",
+    "note": "proxy for microservice cluster",  
+    "categories": ["load balancing"],
+    "platform": "linux",
+    "repository": {
+      "url": "https://github.com/agplacid/templates",
+      "stackfile": "stacks/traefik/docker-stack.yml"
+     }
+    },
+   {
     "type": "stack",
     "title": "Freeswitch",
     "description": "Freeswitch cluster",
