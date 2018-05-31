@@ -60,7 +60,7 @@ services:
           - node.role == manager
       update_config:
         parallelism: 1
-        delay: 10s
+        delay: 20s
       restart_policy:
         condition: on-failure
   consul:
