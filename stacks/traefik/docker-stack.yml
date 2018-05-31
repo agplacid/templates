@@ -92,4 +92,4 @@ networks:
 
 volumes:
   consul-data:
-      driver: [not local]
+      driver: local
