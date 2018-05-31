@@ -43,7 +43,6 @@ services:
     networks:
       - local
       - webgateway
-      - traefik
     ports:
       - target: 80
         published: 80
