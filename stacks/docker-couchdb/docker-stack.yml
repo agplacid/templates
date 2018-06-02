@@ -18,7 +18,7 @@ services:
     - "5984:5984"
     - "5986:5986"
     networks:
-      local:
+      proxy:
         aliases:
         - couchdb.proxy
     cap_add:
