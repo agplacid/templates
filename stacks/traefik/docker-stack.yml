@@ -1,33 +1,48 @@
-version: '3.3'
-
-#
-# ─── SERVICES ───────────────────────────────────────────────────────────────────
-#
-
+version: "3.4"
 services:
-
-  #
-  # SERVICE: Traefik (proxy)
-  # 
-
-  proxy:
-    image:      traefik
-    restart:    always
-
-    hostname:   '${HOST_NAME:-traefik}'
-    domainname: '${DOMAIN_NAME:-local}'
-    
-    configs:
-      - source: toml
-        target: traefik.toml
-    
-    volumes:
-      - acme:/etc/traefik/acme                    # ACME TLS persistence
-      - /var/run/docker.sock:/var/run/docker.sock # Docker socket
-    
+  traefik_init:
+    image: traefik:1.4@sha256:9c299d9613cb01564c8219f4bc56ecc55f30d8f06d35cf3ecf83a85426c13225
+    command:
+      - "storeconfig"
+      - "--web"
+      - "--entrypoints=Name:http Address::80 Redirect.EntryPoint:https"
+      - "--entrypoints=Name:https Address::443 TLS"
+      - "--defaultentrypoints=http,https"
+      - "--acme"
+      - "--acme.storage=traefik/acme/account"
+      - "--acme.entryPoint=https"
+      - "--acme.OnHostRule=true"
+      - "--acme.onDemand=false"
+      - "--acme.email=contact@jmaitrehenry.ca"
+      - "--docker"
+      - "--docker.swarmmode"
+      - "--docker.domain=jmaitrehenry.ca"
+      - "--docker.watch"
+      - "--consul"
+      - "--consul.endpoint=consul:8500"
+      - "--consul.prefix=traefik"
     networks:
-      traefik:
-    
+      - traefik
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - consul
+  traefik:
+    image: traefik:1.4@sha256:9c299d9613cb01564c8219f4bc56ecc55f30d8f06d35cf3ecf83a85426c13225
+    depends_on:
+      - traefik_init
+      - consul
+    command:
+      - "--consul"
+      - "--consul.endpoint=consul:8500"
+      - "--consul.prefix=traefik"
+      - "--acme.storage=traefik/acme/account"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - webgateway
+      - traefik
     ports:
       - target: 80
         published: 80
@@ -38,48 +53,38 @@ services:
       - target: 8080
         published: 8080
         mode: host
-    
     deploy:
       mode: global
-
       placement:
         constraints:
           - node.role == manager
-
       update_config:
         parallelism: 1
         delay: 10s
-
-      labels:
-        traefik.enable:               'true'
-        traefik.port:                 '${PORT}' # Backend management web server ports
-        traefik.protocol:             'http'    # Backend management web server protocols
-        traefik.backend:              'proxy'   # Docker Stack backend name
-        traefik.frontend.rule:        'Host:${HOST_NAME}.${DOMAIN_NAME}'
-        traefik.frontend.entryPoints: '${TRAEFIK_ENTRY_POINTS:-http,https}'
-
-#
-# ─── VOLUMES ────────────────────────────────────────────────────────────────────
-#
-
-volumes:
-  acme: # ACME TLS persistence
-
-#
-# ─── NETWORKS ───────────────────────────────────────────────────────────────────
-#
+      restart_policy:
+        condition: on-failure
+  consul:
+    image: consul
+    command: agent -server -bootstrap-expect=1
+    volumes:
+      - consul-data:/consul/data
+    environment:
+      - CONSUL_LOCAL_CONFIG={"datacenter":"london","server":true}
+      - CONSUL_BIND_INTERFACE=eth0
+      - CONSUL_CLIENT_INTERFACE=eth0
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+    networks:
+      - traefik
 
 networks:
+  webgateway:
+    driver: overlay
+    external: true
   traefik:
     driver: overlay
-    external:
-      name: ${TRAEFIK_NETWORK:-traefik}
-
-#
-# ─── CONFIGS ────────────────────────────────────────────────────────────────────
-#
-
-configs:
-  toml:
-    external: 
-       name: ${TRAEFIK_TOML:-traefik_toml}
