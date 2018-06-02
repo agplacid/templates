@@ -2,15 +2,15 @@ version: '3'
 services:
   kazoo:
     container_name: kazoo
-    hostname: kazoo.local
+    hostname: kazoo.proxy
     build:
       context: images/kazoo
     image: 2600hz/kazoo:${DOCKER_TAG:-latest}
     environment:
       ERLANG_HOSTNAME: long
       ERLANG_COOKIE: change-me
-      RABBITMQ_HOST: rabbitmq.local
-      COUCHDB_HOST: couchdb.local
+      RABBITMQ_HOST: rabbitmq.proxy
+      COUCHDB_HOST: couchdb.proxy
       KAZOO_LOG_LEVEL: info
       COUCHDB_ADMIN_USER: admin
       COUCHDB_ADMIN_PASS: secret
@@ -25,11 +25,11 @@ services:
     tmpfs:
     - /tmp
     networks:
-      local:
+      proxy:
         aliases:
-        - kazoo.local
+        - kazoo.proxy
     cap_add:
     - SYS_NICE
     - SYS_RESOURCE
 networks:
-   local:
+   proxy:
