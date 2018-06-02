@@ -20,7 +20,7 @@ services:
     networks:
       local:
         aliases:
-        - couchdb.local
+        - couchdb.proxy
     cap_add:
     - SYS_NICE
     - SYS_RESOURCE
