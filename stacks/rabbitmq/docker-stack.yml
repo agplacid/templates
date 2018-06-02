@@ -2,7 +2,7 @@ version: '3'
 services:
   rabbitmq:
     container_name: rabbitmq
-    hostname: rabbitmq.local
+    hostname: rabbitmq.proxy
     build:
       context: images/rabbitmq
       args:
@@ -11,15 +11,15 @@ services:
     environment:
       ERLANG_COOKIE: change-me
       ERLANG_HOSTNAME: 'long'
-      RABBITMQ_HOSTS: rabbitmq.local
+      RABBITMQ_HOSTS: rabbitmq.proxy
       RABBITMQ_USER: guest
       RABBITMQ_PASS: guest 
     ports:
     - "15672:15672"
     - "5672:5672"
     networks:
-      local:
+      proxy:
         aliases:
-        - rabbitmq.local
+        - rabbitmq.proxy
 networks:
-  local:
+  proxy:
