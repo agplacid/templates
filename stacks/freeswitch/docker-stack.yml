@@ -2,7 +2,7 @@ version: '3'
 services:
   freeswitch:
     container_name: freeswitch
-    hostname: freeswitch.local
+    hostname: freeswitch.proxy
     build:
       context: .
       args:
@@ -19,9 +19,9 @@ services:
     - "16384-16484:16384-16484/udp"
     - "8031:8031"
     networks:
-      local:
+       proxy:
         aliases:
-        - freeswitch.local
+        - freeswitch.proxy
     cap_add:
     - IPC_LOCK
     - NET_ADMIN
@@ -30,4 +30,4 @@ services:
     - SYS_NICE
     - SYS_RESOURCE
 networks:
-  local:
+   proxy:
