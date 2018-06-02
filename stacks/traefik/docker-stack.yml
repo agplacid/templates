@@ -29,7 +29,7 @@ services:
       traefik:
     
     ports:
-       - target: 80
+      - target: 80
         published: 80
         mode: host
       - target: 443
