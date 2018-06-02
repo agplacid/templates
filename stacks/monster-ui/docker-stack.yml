@@ -15,15 +15,15 @@ services:
       MONSTERUI_SHOW_JS_ERRORS: 'true'
       ERLANG_HOSTNAME: long
       ERLANG_COOKIE: change-me
-      RABBITMQ_HOSTS: rabbitmq.local
-      COUCHDB_HOST: couchdb.local
+      RABBITMQ_HOSTS: rabbitmq.proxy
+      COUCHDB_HOST: couchdb.proxy
       COUCHDB_USER: admin
       COUCHDB_PASS: secret
     ports:
     - "80:80"
     networks:
-      local:
+      proxy:
         aliases:
-        - monster-ui.local
+        - monster-ui.proxy
 networks:
-   local:
+   proxy:
