@@ -19,7 +19,7 @@ services:
     
     configs:
       - source: toml
-        target: /etc/traefik/traefik.toml
+        target: traefik.toml
     
     volumes:
       - acme:/etc/traefik/acme                    # ACME TLS persistence
