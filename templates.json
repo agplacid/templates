@@ -756,6 +756,18 @@
     "repository": {
       "url": "https://github.com/agplacid/templates",
       "stackfile": "stacks/kazoo/docker-stack.yml"
+     }
+   },
+  {
+    "type": "stack",
+    "title": "modoboa",
+    "description": "modoboa cluster",
+    "note": "mail server communication system cluster",  
+    "categories": ["mail server"],
+    "platform": "linux",
+    "repository": {
+      "url": "https://github.com/agplacid/templates",
+      "stackfile": "stacks/modoboa/docker-stack.yml"
     }
    },
   {
