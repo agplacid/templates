@@ -1,4 +1,6 @@
- modoboa:
+version: '3'
+services:
+   modoboa:
     image: flavioaiello/modoboa
     environment:
       - ADMIN_PASSWORD=changeme
