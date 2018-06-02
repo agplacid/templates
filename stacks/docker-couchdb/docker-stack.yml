@@ -2,7 +2,7 @@ version: '3'
 services:
   couchdb:
     container_name: couchdb
-    hostname: couchdb.local
+    hostname: couchdb.proxy
     build:
       context: images/couchdb
       args:
@@ -25,4 +25,4 @@ services:
     - SYS_NICE
     - SYS_RESOURCE
 networks:
-  local:
+  proxy:
